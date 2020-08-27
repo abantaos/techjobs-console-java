@@ -1,8 +1,6 @@
 package org.launchcode.techjobs.console;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by LaunchCode
@@ -109,8 +107,36 @@ public class TechJobs {
     }
 
     // Print a list of jobs
+
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 
-        System.out.println("printJobs is not implemented yet");
+        for (HashMap<String, String> eachMapInJobArrayList : someJobs) {
+            for (Map.Entry abc : eachMapInJobArrayList.entrySet()) {
+
+                for (Map.Entry<String, String> eachEntryOfTotalJobs : eachMapInJobArrayList.entrySet()) {
+                    System.out.println("\n*****\n" + eachEntryOfTotalJobs.getKey() + ": " + eachEntryOfTotalJobs.getValue());
+                }
+            }
+        }
+        //    System.out.println("printJobs is not implemented yet");
     }
 }
+
+
+
+
+
+
+//    private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
+//
+//        for (HashMap<String, String> eachMapInJobArrayList : someJobs) {
+//            for (Map.Entry abc : eachMapInJobArrayList.entrySet()) {
+//
+//                for (Map.Entry<String, String> eachEntryOfTotalJobs : eachMapInJobArrayList.entrySet()) {
+//                    System.out.println("\n*****\n" + eachEntryOfTotalJobs.getKey() + ": " + eachEntryOfTotalJobs.getValue());
+//                }
+//            }
+//        }
+//    //    System.out.println("printJobs is not implemented yet");
+//    }
+//}
