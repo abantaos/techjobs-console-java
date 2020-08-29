@@ -10,6 +10,7 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by LaunchCode
@@ -72,14 +73,18 @@ public class JobData {
 
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
 
-        for (HashMap<String, String> row : allJobs) {
 
-            String aValue = row.get(column);
+            for (HashMap<String, String> row : allJobs) {
 
-            if (aValue.contains(value)) {
-                jobs.add(row);
+                String aValue = row.get(column);
+
+                if (aValue.contains(value)) {
+                    jobs.add(row);
+                } else {
+                    System.out.println("No results found");
+                    break;
+                }
             }
-        }
 
         return jobs;
     }
@@ -125,4 +130,36 @@ public class JobData {
         }
     }
 
+
+
+
+
+    //findByValue
+
+    public static ArrayList<HashMap<String, String>> findByValue(String searchTerm) {
+
+        // load data, if not already loaded
+        loadData();
+
+        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+
+        //for each map in arraylist alljobs
+        for (HashMap<String, String> eachMap : allJobs) {
+            //for each map entry in EachMap
+            for (Map.Entry<String, String> eachMapEntry : eachMap.entrySet()) {
+                //if entry value in lower case contains search term in lower case
+                if(eachMapEntry.getValue().toLowerCase().contains(searchTerm.toLowerCase())) {
+                    //if jobs does not contain map entry
+                    if (!jobs.contains(eachMapEntry)) {
+                        //add job to jobs list
+                        jobs.add(eachMap);
+                    }
+                }
+            }
+        }
+
+        return jobs;
+    }
+
 }
+

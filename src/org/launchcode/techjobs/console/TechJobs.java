@@ -59,9 +59,10 @@ public class TechJobs {
                 String searchTerm = in.nextLine();
 
                 if (searchField.equals("all")) {
-                    System.out.println("Search all fields not yet implemented.");
+                    printJobs(JobData.findByValue(searchTerm));
+                    //System.out.println("Search all fields not yet implemented.");
                 } else {
-                    printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
+                        printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
                 }
             }
         }
@@ -110,33 +111,14 @@ public class TechJobs {
 
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 
-        for (HashMap<String, String> eachMapInJobArrayList : someJobs) {
-            for (Map.Entry abc : eachMapInJobArrayList.entrySet()) {
+        for (HashMap<String, String> eachMapInArrayList : someJobs) { //iterate through each map in arraylist
+            System.out.println("\n*****");
+            eachMapInArrayList.forEach((key, value) -> System.out.println(key + ": " + value));
+            System.out.println("*****\n");
 
-                for (Map.Entry<String, String> eachEntryOfTotalJobs : eachMapInJobArrayList.entrySet()) {
-                    System.out.println("\n*****\n" + eachEntryOfTotalJobs.getKey() + ": " + eachEntryOfTotalJobs.getValue());
-                }
-            }
         }
         //    System.out.println("printJobs is not implemented yet");
     }
 }
 
 
-
-
-
-
-//    private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
-//
-//        for (HashMap<String, String> eachMapInJobArrayList : someJobs) {
-//            for (Map.Entry abc : eachMapInJobArrayList.entrySet()) {
-//
-//                for (Map.Entry<String, String> eachEntryOfTotalJobs : eachMapInJobArrayList.entrySet()) {
-//                    System.out.println("\n*****\n" + eachEntryOfTotalJobs.getKey() + ": " + eachEntryOfTotalJobs.getValue());
-//                }
-//            }
-//        }
-//    //    System.out.println("printJobs is not implemented yet");
-//    }
-//}
