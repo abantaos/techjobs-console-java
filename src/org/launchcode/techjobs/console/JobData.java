@@ -78,11 +78,8 @@ public class JobData {
 
                 String aValue = row.get(column);
 
-                if (aValue.contains(value)) {
+                if (aValue.toLowerCase().contains(value.toLowerCase())) {
                     jobs.add(row);
-                } else {
-                    System.out.println("No results found");
-                    break;
                 }
             }
 
@@ -146,14 +143,13 @@ public class JobData {
         //for each map in arraylist alljobs
         for (HashMap<String, String> eachMap : allJobs) {
             //for each map entry in EachMap
-            for (Map.Entry<String, String> eachMapEntry : eachMap.entrySet()) {
+            for (String eachRow : eachMap.keySet()) {
+                String aValue = eachMap.get(eachRow);
                 //if entry value in lower case contains search term in lower case
-                if(eachMapEntry.getValue().toLowerCase().contains(searchTerm.toLowerCase())) {
-                    //if jobs does not contain map entry
-                    if (!jobs.contains(eachMapEntry)) {
+
+                if(aValue.toLowerCase().contains(searchTerm.toLowerCase())) {
                         //add job to jobs list
                         jobs.add(eachMap);
-                    }
                 }
             }
         }
